@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+main{
+    background-color: cyan;
+}
+
+footer{
+    background-color: black;
+    color: white;
+}
+
+.deportes{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.cartaDeporte{
+    margin: 5rem 0;
+    border: 2px solid black;
+    border-radius: 2rem;
+    background-color: black;
+    width: 60%;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "imgDep titDep"
+                        "imgDep descDep";
+}
+.tituloDeporte{
+    grid-area: titDep;
+}
+.descripcionDeporte{
+    grid-area: descDep;
+}
+.imagenDeporte{
+    grid-area: imgDep;
+    border: 1px solid white;
+    margin: 3px 20px;
+}
+
+.linksFooter{
+    display: flex;
+    justify-content: space-around;
+}
+.linksFooter > a{
+    color: white;
+}
