@@ -2,10 +2,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   }
 
 main{
-    background-color: cyan;
+    background-image: linear-gradient(to right, #3BC0E4, #EAECC6);
 }
 
 footer{
@@ -13,31 +14,51 @@ footer{
     color: white;
 }
 
+header{
+    background-image: radial-gradient( circle farthest-corner at 10% 20%, #1880b8 0%, #221c6a 90% );
+    display: flex;
+    justify-content: start;
+}
+
+
+.tituloPrincipal{
+    padding-top: 3rem;
+    font-size: 300%;
+    
+}
+
 .deportes{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
     color: white;
 }
 
-.cartaDeporte{
+.cartaDeportesPrimarios{
     margin: 5rem 0;
     border: 2px solid black;
     border-radius: 2rem;
-    background-color: black;
-    width: 60%;
+    background-image: linear-gradient( 111.8deg, rgba(14,139,243,1) 36.1%, rgba(41,68,198,1) 72.9% );
+    width: 30%;
     display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: "imgDep titDep"
-                        "imgDep descDep";
+    grid-template-rows: 100px 100px 600px;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas: "titDep titDep"
+                        "iconDep descDep"
+                        "imgDep imgDep";
 }
 .tituloDeporte{
     grid-area: titDep;
+    padding-top: 1rem;
 }
 .descripcionDeporte{
     grid-area: descDep;
+}
+.iconoDeporte{
+    grid-area: iconDep;
+    border: 1px solid white;
+    margin-left: 10px;
 }
 .imagenDeporte{
     grid-area: imgDep;

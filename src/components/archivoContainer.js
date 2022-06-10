@@ -3,6 +3,8 @@ import { Container } from 'react-bootstrap';
 import { Nav } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./archivoContainerStyle.css"
+import { Card } from "./Card/Card"
+import { List } from "./List/List"
 
 export const ArchivoContainer = () => {
     return (
@@ -17,33 +19,29 @@ export const ArchivoContainer = () => {
 const Header = () => {
     return (
         <header>
-            <NavBootstrap />
+            <Card titulo = "Deportes" />
+            <Navbar className='navBar' bg="" variant="dark">
+                <Container>
+                
+                <Nav className="me-auto">
+                <Nav.Link href="#inicio">Inicio</Nav.Link>
+                <Nav.Link href="#nosotros">Nosotros</Nav.Link>
+                <Nav.Link href="#productos">Productos</Nav.Link>
+                <Nav.Link href="#contacto">Contacto</Nav.Link>
+                </Nav>
+                </Container>
+            </Navbar>
         </header>
-    );
-}
-
-const NavBootstrap = () => {
-    return (
-    <>
-        <Navbar bg="dark" variant="dark">
-        <Container>
-        <Navbar.Brand href="#home">Deportes</Navbar.Brand>
-        <Nav className="me-auto">
-        <Nav.Link href="#inicio">Inicio</Nav.Link>
-        <Nav.Link href="#nosotros">Nosotros</Nav.Link>
-        <Nav.Link href="#productos">Productos</Nav.Link>
-        <Nav.Link href="#contacto">Contacto</Nav.Link>
-        </Nav>
-        </Container>
-    </Navbar>
-        </>
     );
 }
 
 const Main = () => {
     return (
         <main>
+            <h1 className='tituloPrincipal'>TIENDA DEPORTIVA</h1>
+            <h5>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt repellendus</h5>
             <Deportes />
+            <List />
         </main>
     );
 }
@@ -71,10 +69,11 @@ const Deportes = () => {
 }
 
 const UnDeporte = (props) => {
-    const { tituloDeporte = "Un deporte", descripcion, imagen = "IMG"} = props;
+    const { tituloDeporte = "Un deporte", descripcion, imagen = "IMG", icono = "icon"} = props;
     return (
-        <div className="cartaDeporte">
+        <div className="cartaDeportesPrimarios">
             <h2 className="tituloDeporte">{tituloDeporte}</h2>
+            <div className='iconoDeporte'>{icono}</div>
             <p className="descripcionDeporte">{descripcion}</p>
             <div className="imagenDeporte">
                 {imagen}

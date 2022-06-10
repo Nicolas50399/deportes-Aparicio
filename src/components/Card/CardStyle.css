@@ -1,0 +1,11 @@
+.cardContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-left: 10px;
+}
+
+.cardContainer > img{
+    width: 20%;
+    margin-left: 13px;
+}
