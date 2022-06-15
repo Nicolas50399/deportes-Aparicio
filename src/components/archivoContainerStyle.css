@@ -66,6 +66,11 @@ header{
     margin: 3px 20px;
 }
 
+.tituloProductosDestacados{
+    margin-top: 4rem;
+    margin-bottom: 3rem;
+}
+
 .linksFooter{
     display: flex;
     justify-content: space-around;

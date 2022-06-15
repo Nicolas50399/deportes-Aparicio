@@ -1,0 +1,25 @@
+.container{
+    display: grid;
+    justify-content: center;
+    grid-template-areas: 
+    "prod1 prod1 prod1 prod2 prod2 prod2"
+    "prod3 prod3 prod4 prod4 prod5 prod5";
+}
+
+.producto1{
+    grid-area: prod1;
+}
+.producto2{
+    grid-area: prod2;
+}
+.producto3{
+    grid-area: prod3;
+    margin-right: 3rem;
+}
+.producto4{
+    grid-area: prod4;
+}
+.producto5{
+    grid-area: prod5;
+    margin-left: 3rem;
+}
