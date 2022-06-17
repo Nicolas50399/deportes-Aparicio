@@ -6,6 +6,9 @@ import "./archivoContainerStyle.css"
 import { Card } from "./Card/Card"
 import { List } from "./List/List"
 import ProductoListContainer from './ProductoListContainer';
+import iconoFutbol from "../assets/iconoFutbol.jpg";
+import iconoBasquet from "../assets/iconoBasquet.jpg";
+import iconoTenis from '../assets/iconoTenis.png';
 
 export const ArchivoContainer = () => {
     return (
@@ -45,17 +48,17 @@ const Main = () => {
                 <UnDeporte 
                     tituloDeporte={"FÚTBOL"}
                     descripcion={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat,"}
-                    
+                    icono={iconoFutbol}
                 />
                 <UnDeporte 
                     tituloDeporte={"BASQUET"}
                     descripcion={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat,"}
-                    
+                    icono={iconoBasquet}
                 />
                 <UnDeporte 
                     tituloDeporte={"TENIS"}
                     descripcion={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat,"}
-                    
+                    icono={iconoTenis}
                 />
             </section>
             <List />
@@ -66,11 +69,13 @@ const Main = () => {
 }
 
 const UnDeporte = (props) => {
-    const { tituloDeporte = "Un deporte", descripcion, imagen = "IMG", icono = "icon"} = props;
+    const { tituloDeporte = "Un deporte", descripcion, imagen = "IMG", icono} = props;
     return (
         <div className="cartaDeportesPrimarios">
             <h2 className="tituloDeporte">{tituloDeporte}</h2>
-            <div className='iconoDeporte'>{icono}</div>
+            <div className='iconoDeporte'>
+                <img src={icono} alt="IMG"/>
+            </div>
             <p className="descripcionDeporte">{descripcion}</p>
             <div className="imagenDeporte">
                 {imagen}

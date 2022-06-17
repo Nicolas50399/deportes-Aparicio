@@ -60,6 +60,8 @@ header{
     grid-area: iconDep;
     border: 1px solid white;
     margin-left: 10px;
+    width: 100px;
+    height: 100px;
 }
 .imagenDeporte{
     grid-area: imgDep;
