@@ -3,6 +3,7 @@ import customFetch from "../utils/customFetch"
 import productos from './utils/productos'
 import './ProductoListContainerStyle.css'
 import ProductoList from './ProductoList'
+import Loader from './Loader'
 
 function ProductoListContainer() {
     const [products, setProducts] = useState([])
@@ -13,9 +14,9 @@ function ProductoListContainer() {
     }, [products])
 
   return (
-    <div className="container">
+    <div className="contenedor">
         {
-            products?.length <= 0 ? <h1>Cargando...</h1> : <ProductoList productos={products}/>
+            products?.length <= 0 ? <Loader /> : <ProductoList productos={products}/>
         }
     </div>
   )

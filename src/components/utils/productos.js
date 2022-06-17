@@ -24,8 +24,8 @@ const productos = [
     },
     {
         id: 3,
-        nombre: 'Raqueta Babolat Nadal',
-        descripcion: 'Una raqueta de tenis usada por Nadal',
+        nombre: 'Raqueta Babolat Rafael Nadal',
+        descripcion: 'Una raqueta de tenis profesional usada por Nadal',
         precio: 9000,
         stock: 10,
         imagen: raquetaBabolatNadal
@@ -33,15 +33,15 @@ const productos = [
     {
         id: 4,
         nombre: 'Camiseta Argentina (Messi) ',
-        descripcion: 'Una camiseta de Argentina con el estampado de Messi',
+        descripcion: 'Una camiseta de Argentina con estampado de Messi',
         precio: 10000,
         stock: 25,
         imagen: camisetaArgentinaMessi
     },
     {
         id: 5,
-        nombre: 'Pelotas de tenis Wilson',
-        descripcion: 'Tres pelotas de tenis',
+        nombre: 'Pack pelotas de tenis Wilson',
+        descripcion: 'Un pack con 3(tres) pelotas profesionales de tenis',
         precio: 2000,
         stock: 30,
         imagen: pelotasTenisWilson

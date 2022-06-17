@@ -1,3 +1,13 @@
 .listContainer{
     list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.listContainer > li{
+    font-size: x-large;
+    margin-top: 1rem;
+    border-bottom: 2px solid blue;
+    border-radius: 0.5rem;
 }

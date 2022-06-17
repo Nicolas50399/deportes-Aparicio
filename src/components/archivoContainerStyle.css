@@ -7,6 +7,7 @@
 
 main{
     background-image: linear-gradient(to right, #3BC0E4, #EAECC6);
+    padding-bottom: 2rem;
 }
 
 footer{
@@ -77,4 +78,22 @@ header{
 }
 .linksFooter > a{
     color: white;
+}
+
+@media only screen and (max-width: 1050px){
+    .deportes{
+        display: flex;
+        flex-direction: column;
+    }
+    .cartaDeportesPrimarios{
+        width: 80%;
+        margin: 2rem 0;
+        height: 500px;
+    }
+    .imagenDeporte{
+        height: 260px;
+    }
+    .iconoDeporte{
+        width: 100px;
+    }
 }
