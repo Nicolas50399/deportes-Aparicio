@@ -7,15 +7,13 @@ import "./ProductoDetailContainerStyle.css"
 
 function ProductoDetailContainer() {
     const [products, setProducts] = useState([productos])
-    const [product, setProduct] = useState();
+    const [product, setProduct] = useState(productos.find(p => p.id === 0))
 
     useEffect(() => {
         CallProductos()
             .then(() => {
-
-                //setProduct(products.find(p => p.id === 2))
+                setProduct(productos.find(p => p.id === 4))
                 console.log(product);
-                console.log(products[3])
                 //console.log("ok");
             }, )
             .catch(() => {
@@ -25,7 +23,7 @@ function ProductoDetailContainer() {
                 setProduct(product)
             });
 
-            customFetch(1000, productos)
+            customFetch(3000, productos)
                 .then(resultado => setProducts(resultado))
 
     }, );
