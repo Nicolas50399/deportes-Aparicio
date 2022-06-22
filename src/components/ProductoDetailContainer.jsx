@@ -12,15 +12,17 @@ function ProductoDetailContainer() {
     useEffect(() => {
         CallProductos()
             .then(() => {
-                setProduct(products.find(product.id === 2))
-                console.log(products);
+
+                //setProduct(products.find(p => p.id === 2))
+                console.log(product);
+                console.log(products[3])
+                //console.log("ok");
             }, )
             .catch(() => {
                 console.log("ERROR");
             })
             .finally(() => {
                 setProduct(product)
-                
             });
 
             customFetch(1000, productos)
