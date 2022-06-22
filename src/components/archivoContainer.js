@@ -9,6 +9,7 @@ import ProductoListContainer from './ProductoListContainer';
 import iconoFutbol from "../assets/iconoFutbol.jpg";
 import iconoBasquet from "../assets/iconoBasquet.jpg";
 import iconoTenis from '../assets/iconoTenis.png';
+import ProductoDetailContainer from './ProductoDetailContainer';
 
 export const ArchivoContainer = () => {
     return (
@@ -63,7 +64,7 @@ const Main = () => {
             </section>
             <List />
             <h2 className='tituloProductosDestacados'>PRODUCTOS DESTACADOS</h2>
-            <ProductoListContainer />
+            <ProductoDetailContainer />
         </main>
     );
 }

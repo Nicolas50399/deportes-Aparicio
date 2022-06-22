@@ -49,3 +49,11 @@ const productos = [
 ]
 
 export default productos;
+
+export const CallProductos = (id) => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(productos.find(producto => producto.id === id))
+        }, );
+    })
+}

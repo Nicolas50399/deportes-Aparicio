@@ -1,0 +1,43 @@
+.contenedor{
+    display: flex;
+    justify-content: center;
+    /*grid-template-areas: 
+    "prod1 prod1 prod1 prod2 prod2 prod2"
+    "prod3 prod3 prod4 prod4 prod5 prod5";*/
+    flex-wrap: wrap;
+    row-gap: 70px;
+    column-gap: 30px;
+    border: 1px solid black;
+    padding: 0 2rem;
+    margin: 0 2rem;
+}
+
+.producto1{
+    grid-area: prod1;
+    border: 1px solid rgb(109, 107, 107);
+}
+.producto2{
+    grid-area: prod2;
+    border: 1px solid rgb(109, 107, 107);
+}
+.producto3{
+    grid-area: prod3;
+    border: 1px solid rgb(109, 107, 107);
+}
+.producto4{
+    grid-area: prod4;
+    border: 1px solid rgb(109, 107, 107);
+}
+.producto5{
+    grid-area: prod5;
+    border: 1px solid rgb(109, 107, 107);
+}
+/*
+@media only screen and (max-width: 950px){
+    .container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}*/
