@@ -3,11 +3,7 @@ import ProductoCount from '../ProductoCount';
 import "../ProductoDetailContainerStyle.css"
 import camisetaArgentinaMessi from '../../assets/camisetaArgentinaMessi.jpg';
 
-function ProductoDetail({nombre = "Camiseta Argentina (Messi)",
-   descripcion="Una camiseta de Argentina con estampado de Messi", 
-   imagen = camisetaArgentinaMessi, 
-   precio = 10000, 
-   stock = 25}) {
+function ProductoDetail({nombre, descripcion, imagen, precio, stock}) {
 
   return (
     <div className={"producto"}>

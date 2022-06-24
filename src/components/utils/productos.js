@@ -8,6 +8,7 @@ import pelotasTenisWilson from '../../assets/pelotasTenisWilson.jpg';
 const productos = [
     {
         id: 1,
+        seccion: "futbol",
         nombre: 'Botines Nike CR7',
         descripcion: 'Unos botines de futbol de Cristiano Ronaldo',
         precio: 6000,
@@ -16,6 +17,7 @@ const productos = [
     },
     {
         id: 2,
+        seccion: "basquet",
         nombre: 'Pelota de Basquet Wilson',
         descripcion: 'Una pelota de basquet',
         precio: 8500,
@@ -24,6 +26,7 @@ const productos = [
     },
     {
         id: 3,
+        seccion: "tenis",
         nombre: 'Raqueta Babolat Rafael Nadal',
         descripcion: 'Una raqueta de tenis profesional usada por Nadal',
         precio: 9000,
@@ -32,6 +35,7 @@ const productos = [
     },
     {
         id: 4,
+        seccion: "futbol",
         nombre: 'Camiseta Argentina (Messi) ',
         descripcion: 'Una camiseta de Argentina con estampado de Messi',
         precio: 10000,
@@ -40,6 +44,7 @@ const productos = [
     },
     {
         id: 5,
+        seccion: "tenis",
         nombre: 'Pack pelotas de tenis Wilson',
         descripcion: 'Un pack con 3(tres) pelotas profesionales de tenis',
         precio: 2000,

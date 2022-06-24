@@ -1,9 +1,9 @@
 import './App.css';
-import { ArchivoContainer } from "./components/archivoContainer"
+import { AppRouting } from './components/AppRouting';
 
 function App() {
   return (
-   <ArchivoContainer /> 
+   <AppRouting /> 
   );
 }
 

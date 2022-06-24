@@ -10,6 +10,7 @@ import iconoFutbol from "../assets/iconoFutbol.jpg";
 import iconoBasquet from "../assets/iconoBasquet.jpg";
 import iconoTenis from '../assets/iconoTenis.png';
 import ProductoDetailContainer from './ProductoDetailContainer';
+import { useNavigate } from "react-router-dom"
 
 export const ArchivoContainer = () => {
     return (
@@ -21,7 +22,7 @@ export const ArchivoContainer = () => {
     );
 }
 
-const Header = () => {
+export const Header = () => {
     return (
         <header>
             <Card titulo = "Deportes" />
@@ -41,6 +42,7 @@ const Header = () => {
 }
 
 const Main = () => {
+    let navigate = useNavigate();
     return (
         <main>
             <h1 className='tituloPrincipal'>TIENDA DEPORTIVA</h1>
@@ -64,7 +66,7 @@ const Main = () => {
             </section>
             <List />
             <h2 className='tituloProductosDestacados'>PRODUCTOS DESTACADOS</h2>
-            <ProductoDetailContainer />
+            <button onClick={() => navigate("/productos")}> Ir a la lista de productos </button>
         </main>
     );
 }
@@ -85,7 +87,7 @@ const UnDeporte = (props) => {
     );
 }
 
-const Footer = () => {
+export const Footer = () => {
     return (
         <footer>
             <p>@2022 Todos los derechos reservados</p>

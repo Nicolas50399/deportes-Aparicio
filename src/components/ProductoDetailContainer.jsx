@@ -4,15 +4,20 @@ import Loader from './Loader'
 import ProductoDetail from './utils/ProductoDetail';
 import productos, { CallProductos } from './utils/productos';
 import "./ProductoDetailContainerStyle.css"
+import { useParams, useNavigate } from "react-router-dom"
+import { Footer, Header } from './ArchivoContainer';
+
 
 function ProductoDetailContainer() {
+    const {id} = useParams();
     const [products, setProducts] = useState([productos])
-    const [product, setProduct] = useState(productos.find(p => p.id === 0))
+    const [product, setProduct] = useState(productos[id-1])
+    let navigate =useNavigate();
 
     useEffect(() => {
         CallProductos()
             .then(() => {
-                setProduct(productos.find(p => p.id === 4))
+                setProduct(productos.find(p => p.id === id))
                 console.log(product);
                 //console.log("ok");
             }, )
@@ -23,17 +28,22 @@ function ProductoDetailContainer() {
                 setProduct(product)
             });
 
-            customFetch(3000, productos)
-                .then(resultado => setProducts(resultado))
-
     }, );
 
   return (
-    <div className='contenedor'>
-        {
-            products?.length <= 0 ? <Loader /> : <ProductoDetail detalles={product} />
-        }
-    </div>
+    <>
+    <Header />
+    <main>
+        <div className='contenedor'>
+            {
+                products.length? <ProductoDetail key={product.id} {...product} /> : <Loader />
+            }
+        </div>
+        <button onClick={() => navigate("/productos")}> Volver atrás </button>
+    </main>
+    <Footer />
+    </>
+    
   )
 }
 
