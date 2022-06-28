@@ -1,7 +1,6 @@
 import React from 'react'
 import ProductoCount from '../ProductoCount';
-import "../ProductoDetailContainerStyle.css"
-import camisetaArgentinaMessi from '../../assets/camisetaArgentinaMessi.jpg';
+import "../ProductoDetailContainerStyle.css";
 
 function ProductoDetail({nombre, descripcion, imagen, precio, stock}) {
 

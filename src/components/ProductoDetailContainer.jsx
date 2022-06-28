@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import customFetch from '../utils/customFetch'
 import Loader from './Loader'
 import ProductoDetail from './utils/ProductoDetail';
 import productos, { CallProductos } from './utils/productos';
@@ -10,7 +9,7 @@ import { Footer, Header } from './ArchivoContainer';
 
 function ProductoDetailContainer() {
     const {id} = useParams();
-    const [products, setProducts] = useState([productos])
+    const [products] = useState([productos])
     const [product, setProduct] = useState(productos[id-1])
     let navigate =useNavigate();
 

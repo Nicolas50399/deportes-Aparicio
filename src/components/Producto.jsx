@@ -1,10 +1,8 @@
 import React from "react";
-import ProductoCount from "./ProductoCount";
 import style from './ProductoStyle.css';
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-function Producto({nombre, descripcion, precio, imagen, stock, id}){
-    const navigate = useNavigate();
+function Producto({nombre, precio, imagen, id}){
     return (
         <div className={"producto" + id}>
             <h2 className="nombreProducto">{nombre}</h2>
