@@ -5,11 +5,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./archivoContainerStyle.css"
 import { Card } from "./Card/Card"
 import { List } from "./List/List"
-import ProductoListContainer from './ProductoListContainer';
 import iconoFutbol from "../assets/iconoFutbol.jpg";
 import iconoBasquet from "../assets/iconoBasquet.jpg";
 import iconoTenis from '../assets/iconoTenis.png';
-import ProductoDetailContainer from './ProductoDetailContainer';
 import { useNavigate } from "react-router-dom"
 
 export const ArchivoContainer = () => {
