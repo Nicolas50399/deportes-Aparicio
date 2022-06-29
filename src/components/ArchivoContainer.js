@@ -28,10 +28,10 @@ export const Header = () => {
                 <Container>
                 
                 <Nav className="linksHeader">
-                <Link className="linkHeader" to={`/`}>Inicio</Link>
-                <Link className="linkHeader" to={``}>Nosotros</Link>
-                <Link className="linkHeader" to={`/productos`}>Productos</Link>
-                <Link className="linkHeader" to={``}>Contacto</Link>
+                <Link className="link" to={`/`}>Inicio</Link>
+                <Link className="link" to={``}>Nosotros</Link>
+                <Link className="link" to={`/productos`}>Productos</Link>
+                <Link className="link" to={``}>Contacto</Link>
                 </Nav>
                 </Container>
             </Navbar>
@@ -90,10 +90,10 @@ export const Footer = () => {
         <footer>
             <p>@2022 Todos los derechos reservados</p>
             <div className="linksFooter">
-                <a href="#">Inicio</a>
-                <a href="#">Nosotros</a>
-                <a href="#">Productos</a>
-                <a href="#">Contacto</a>
+            <Link className="link" to={`/`}>Inicio</Link>
+                <Link className="link" to={``}>Nosotros</Link>
+                <Link className="link" to={`/productos`}>Productos</Link>
+                <Link className="link" to={``}>Contacto</Link>
             </div>
         </footer>
     );
