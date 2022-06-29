@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import { ArchivoContainer } from "./ArchivoContainer"
 import ProductoDetailContainer from "./ProductoDetailContainer";
 import ProductoListContainer from "./ProductoListContainer";
-
+import { Cart } from "./Cart";
 
 export const AppRouting = () => {
     return (<BrowserRouter>
@@ -14,6 +14,7 @@ export const AppRouting = () => {
             localhost:3000/productos/5
             localhost:3000/productos/4
     */}
+            <Route path="productos/:id/cart" element={<Cart />} />
         </Routes>
     </BrowserRouter>);
 }
