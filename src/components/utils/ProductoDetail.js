@@ -18,7 +18,7 @@ function ProductoDetail({nombre, descripcion, imagen, precio, stock}) {
 
             {agregado? <button onClick={() => navigate("./cart")}>Terminar mi compra</button> : 
             <>
-            <ProductoCount stock={stock} />
+            <ProductoCount stock={stock} precio={precio} />
             <button onClick={
               () => {
                 console.log("agregado")

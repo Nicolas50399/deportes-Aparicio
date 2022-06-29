@@ -8,7 +8,7 @@ import { List } from "./List/List"
 import iconoFutbol from "../assets/iconoFutbol.jpg";
 import iconoBasquet from "../assets/iconoBasquet.jpg";
 import iconoTenis from '../assets/iconoTenis.png';
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 
 export const ArchivoContainer = () => {
     return (
@@ -27,11 +27,11 @@ export const Header = () => {
             <Navbar className='navBar' bg="" variant="dark">
                 <Container>
                 
-                <Nav className="me-auto">
-                <Nav.Link href="#inicio">Inicio</Nav.Link>
-                <Nav.Link href="#nosotros">Nosotros</Nav.Link>
-                <Nav.Link href="#productos">Productos</Nav.Link>
-                <Nav.Link href="#contacto">Contacto</Nav.Link>
+                <Nav className="linksHeader">
+                <Link className="linkHeader" to={`/`}>Inicio</Link>
+                <Link className="linkHeader" to={``}>Nosotros</Link>
+                <Link className="linkHeader" to={`/productos`}>Productos</Link>
+                <Link className="linkHeader" to={``}>Contacto</Link>
                 </Nav>
                 </Container>
             </Navbar>

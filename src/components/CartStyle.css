@@ -1,0 +1,9 @@
+.mainCart{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.imgCart{
+    width: 20%;
+}

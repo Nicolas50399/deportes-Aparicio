@@ -3,13 +3,13 @@ import React, { useState } from 'react'
 import './ProductoCount.css'
 
 const ButtonComponentAdd = ({count,changeCount,stock}) => {
-    return <button onClick={
+    return <button className='button1' onClick={
         () => adding(count,changeCount,stock)
     }>+</button>
   }
 
   const ButtonComponentRemove = ({count,changeCount}) => {
-    return <button onClick={
+    return <button className='button5' onClick={
         () => {
             subs(count,changeCount)
         }
@@ -28,13 +28,14 @@ function subs(count,changeCount) {
     }
 }
 
-function ProductoCount({stock}) {
+function ProductoCount({stock,precio}) {
 
     const [count, setCount] = useState(0);
     const handleCount = (value) => setCount(value);
 
     
   return (
+    <>
     <div>
         <ButtonComponentRemove count={count} changeCount={handleCount}/>
         {/* <button onClick={subs} className="button button5">-</button> */}
@@ -42,6 +43,11 @@ function ProductoCount({stock}) {
         {/* <button onClick={adding} className="button button1">+</button> */}
         <ButtonComponentAdd count={count} changeCount={handleCount} stock={stock}/>
     </div>
+    <h5>({stock}) Disponibles</h5>
+    <h6>Costo total = ${precio*count}</h6>
+    </>
+    
+    
   )
 }
 
