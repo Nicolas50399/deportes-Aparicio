@@ -8,7 +8,12 @@ import { List } from "./List/List"
 import iconoFutbol from "../assets/iconoFutbol.jpg";
 import iconoBasquet from "../assets/iconoBasquet.jpg";
 import iconoTenis from '../assets/iconoTenis.png';
+import seccionTenis1 from '../assets/seccionTenis1.jpg';
+import seccionFutbol1 from '../assets/seccionFutbol1.jpg';
+import seccionBasquet1 from '../assets/seccionBasquet1.jpg';
 import { useNavigate, Link } from "react-router-dom"
+import { BsCart3 } from "react-icons/bs";
+import { SiInstagram, SiWhatsapp, SiFacebook, SiGmail } from "react-icons/si";
 
 export const ArchivoContainer = () => {
     return (
@@ -23,18 +28,21 @@ export const ArchivoContainer = () => {
 export const Header = () => {
     return (
         <header>
+            <div className='headerNavLogo'>
             <Card titulo = "Deportes" />
-            <Navbar className='navBar' bg="" variant="dark">
-                <Container>
-                
-                <Nav className="linksHeader">
-                <Link className="link" to={`/`}>Inicio</Link>
-                <Link className="link" to={``}>Nosotros</Link>
-                <Link className="link" to={`/productos`}>Productos</Link>
-                <Link className="link" to={``}>Contacto</Link>
-                </Nav>
-                </Container>
-            </Navbar>
+                <Navbar className='navBar' bg="" variant="dark">
+                    <Container>
+                    
+                    <Nav className="linksHeader">
+                    <Link className="link" to={`/`}>Inicio</Link>
+                    <Link className="link" to={``}>Nosotros</Link>
+                    <Link className="link" to={`/productos`}>Productos</Link>
+                    <Link className="link" to={``}>Contacto</Link>
+                    </Nav>
+                    </Container>
+                </Navbar>
+            </div>
+            <BsCart3 className='carritoCompras' />
         </header>
     );
 }
@@ -50,16 +58,19 @@ const Main = () => {
                     tituloDeporte={"FÚTBOL"}
                     descripcion={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat,"}
                     icono={iconoFutbol}
+                    imagen={seccionFutbol1}
                 />
                 <UnDeporte 
                     tituloDeporte={"BASQUET"}
                     descripcion={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat,"}
                     icono={iconoBasquet}
+                    imagen={seccionBasquet1}
                 />
                 <UnDeporte 
                     tituloDeporte={"TENIS"}
                     descripcion={"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat,"}
                     icono={iconoTenis}
+                    imagen={seccionTenis1}
                 />
             </section>
             <List />
@@ -70,7 +81,7 @@ const Main = () => {
 }
 
 const UnDeporte = (props) => {
-    const { tituloDeporte = "Un deporte", descripcion, imagen = "IMG", icono} = props;
+    const { tituloDeporte = "Un deporte", descripcion, imagen, icono} = props;
     return (
         <div className="cartaDeportesPrimarios">
             <h2 className="tituloDeporte">{tituloDeporte}</h2>
@@ -78,9 +89,8 @@ const UnDeporte = (props) => {
                 <img src={icono} alt="IMG"/>
             </div>
             <p className="descripcionDeporte">{descripcion}</p>
-            <div className="imagenDeporte">
-                {imagen}
-            </div>
+            <img className="imagenDeporte" src={imagen} alt="IMG"/>
+            
         </div>
     );
 }
@@ -90,10 +100,16 @@ export const Footer = () => {
         <footer>
             <p>@2022 Todos los derechos reservados</p>
             <div className="linksFooter">
-            <Link className="link" to={`/`}>Inicio</Link>
+                <Link className="link" to={`/`}>Inicio</Link>
                 <Link className="link" to={``}>Nosotros</Link>
                 <Link className="link" to={`/productos`}>Productos</Link>
                 <Link className="link" to={``}>Contacto</Link>
+            </div>
+            <div className='redesFooter'>
+                <SiFacebook className='red' />
+                <SiInstagram className='red' />
+                <SiGmail className='red' />
+                <SiWhatsapp className='red' />
             </div>
         </footer>
     );

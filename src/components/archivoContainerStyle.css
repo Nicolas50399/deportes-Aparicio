@@ -16,10 +16,41 @@ footer{
     color: white;
 }
 
+.redesFooter{
+    display: flex;
+    justify-content:center;
+    padding: 10px 0;
+}
+
+.red{
+    color: white;
+    margin: 0 1rem;
+    width: 40px;
+    height: 40px;
+}
+
 header{
     background-image: radial-gradient( circle farthest-corner at 10% 20%, #1880b8 0%, #221c6a 90% );
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.headerNavLogo{
+    display: flex;
     justify-content: start;
+    align-items: center;
+}
+
+.carritoCompras{
+    height: 40px;
+    width: 40px;
+    color: white;
+    margin-right: 4rem;
+}
+
+.carritoCompras:hover{
+    color: black;
 }
 
 
@@ -74,6 +105,10 @@ header{
     grid-area: imgDep;
     border: 1px solid white;
     margin: 3px 20px;
+    width: 88%;
+    height: 580px;
+    align-self: center;
+    justify-self: center;
 }
 
 .tituloProductosDestacados{
@@ -89,7 +124,7 @@ header{
     color: white;
 }
 
-@media only screen and (max-width: 1050px){
+/*@media only screen and (max-width: 1050px){
     .deportes{
         display: flex;
         flex-direction: column;
@@ -105,4 +140,4 @@ header{
     .iconoDeporte{
         width: 100px;
     }
-}
+}*/
