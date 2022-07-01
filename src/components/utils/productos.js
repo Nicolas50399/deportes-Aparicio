@@ -13,7 +13,8 @@ const productos = [
         descripcion: 'Unos botines de futbol de Cristiano Ronaldo',
         precio: 6000,
         stock: 20,
-        imagen: botinesNikeCR7
+        imagen: botinesNikeCR7,
+        cantidad: 0
     },
     {
         id: 2,
@@ -22,7 +23,8 @@ const productos = [
         descripcion: 'Una pelota de basquet',
         precio: 8500,
         stock: 5,
-        imagen: pelotaBasquetWilson
+        imagen: pelotaBasquetWilson,
+        cantidad: 0
     },
     {
         id: 3,
@@ -31,7 +33,8 @@ const productos = [
         descripcion: 'Una raqueta de tenis profesional usada por Nadal',
         precio: 9000,
         stock: 10,
-        imagen: raquetaBabolatNadal
+        imagen: raquetaBabolatNadal,
+        cantidad: 0
     },
     {
         id: 4,
@@ -40,7 +43,8 @@ const productos = [
         descripcion: 'Una camiseta de Argentina con estampado de Messi',
         precio: 10000,
         stock: 25,
-        imagen: camisetaArgentinaMessi
+        imagen: camisetaArgentinaMessi,
+        cantidad: 0
     },
     {
         id: 5,
@@ -49,7 +53,8 @@ const productos = [
         descripcion: 'Un pack con 3(tres) pelotas profesionales de tenis',
         precio: 2000,
         stock: 30,
-        imagen: pelotasTenisWilson
+        imagen: pelotasTenisWilson,
+        cantidad: 0
     }
 ]
 

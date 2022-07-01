@@ -14,8 +14,13 @@ import seccionBasquet1 from '../assets/seccionBasquet1.jpg';
 import { useNavigate, Link } from "react-router-dom"
 import { BsCart3 } from "react-icons/bs";
 import { SiInstagram, SiWhatsapp, SiFacebook, SiGmail } from "react-icons/si";
+import { createContext, useState } from 'react';
+
+
 
 export const ArchivoContainer = () => {
+
+    
     return (
     <div className="App">
         <Header />

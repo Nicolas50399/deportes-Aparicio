@@ -1,10 +1,14 @@
 
 import React, { useState } from 'react'
+import { useContext } from 'react'
 import './ProductoCount.css'
+import { CountContext } from './utils/ProductoDetail'
 
 const ButtonComponentAdd = ({count,changeCount,stock}) => {
     return <button className='button1' onClick={
-        () => adding(count,changeCount,stock)
+        () => {
+            adding(count,changeCount,stock)
+        }
     }>+</button>
   }
 
@@ -29,10 +33,12 @@ function subs(count,changeCount) {
 }
 
 function ProductoCount({stock,precio}) {
-
+    const { cambiarCount } = useContext(CountContext);
     const [count, setCount] = useState(0);
-    const handleCount = (value) => setCount(value);
-
+    const handleCount = (value) => {
+        setCount(value);
+        cambiarCount(value);
+    }
     
   return (
     <>

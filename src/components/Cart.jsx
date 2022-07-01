@@ -3,10 +3,13 @@ import { useNavigate, useParams } from "react-router-dom"
 import { Header, Footer } from './ArchivoContainer';
 import productos from './utils/productos';
 import "./CartStyle.css"
+import { useContext } from 'react';
+import { CartContext } from './ProductoDetailContainer';
 
 
 export function Cart() {
   const {id} = useParams();
+  //const { cart, price, addProduct, isInCart } = useContext(CartContext);
   let navigate = useNavigate();
   return (
     <>

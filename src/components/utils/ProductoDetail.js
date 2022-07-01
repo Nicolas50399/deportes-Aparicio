@@ -1,10 +1,25 @@
-import React from 'react'
+import React, { createContext, useContext } from 'react'
 import ProductoCount from '../ProductoCount';
 import "../ProductoDetailContainerStyle.css";
 import { useState } from 'react';
-import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom";
+import { CartContext } from '../ProductoDetailContainer';
 
-function ProductoDetail({nombre, descripcion, imagen, precio, stock}) {
+export const CountContext = createContext();
+
+const CountProvider = ({children}) => {
+  const [count, setCount] = useState(0)
+  const cambiarCount = (nuevoCount) => setCount(nuevoCount)
+  return(
+    <CountContext.Provider value={ {count, cambiarCount} }>
+      {children}
+    </CountContext.Provider>
+  );
+}
+
+export function ProductoDetail({nombre, descripcion, imagen, precio, stock}) {
+  const { cart, price, addProduct, isInCart } = useContext(CartContext);
+  //const { count } = useContext(CountContext);
   const [agregado, setAgregado] = useState(false)
   let navigate = useNavigate();
   return (
@@ -18,10 +33,13 @@ function ProductoDetail({nombre, descripcion, imagen, precio, stock}) {
 
             {agregado? <button onClick={() => navigate("./cart")}>Terminar mi compra</button> : 
             <>
-            <ProductoCount stock={stock} precio={precio} />
+            <CountProvider>
+              <ProductoCount stock={stock} precio={precio} />
+            </CountProvider>
             <button onClick={
               () => {
                 console.log("agregado")
+                //console.log({count})
                 setAgregado(true)
               }
             }>Agregar al carrito</button>

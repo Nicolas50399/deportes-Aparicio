@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom"
 
 function ProductoListContainer() {
     const [products, setProducts] = useState([])
-    const [filtrado, setFiltrado] = useState(false);
     let navigate = useNavigate();
 
     useEffect(() => {
