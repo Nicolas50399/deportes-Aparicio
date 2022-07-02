@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import { CartContext } from '../App'
 
 function ProductoCart({nombre, precio, imagen, id, cantidad}) {
-    const { removeProduct, cart } = useContext(CartContext);
+    const { removeProduct } = useContext(CartContext);
 
   return (
     <div className={"producto" + id}>

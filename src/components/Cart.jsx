@@ -1,7 +1,6 @@
 import React from 'react'
-import { useNavigate, useParams } from "react-router-dom"
+import { useNavigate /*,useParams*/ } from "react-router-dom"
 import { Header, Footer } from './ArchivoContainer';
-import productos from './utils/productos';
 import "./CartStyle.css"
 import { useContext } from 'react';
 import ProductoCart from './ProductoCart';
@@ -9,7 +8,7 @@ import { CartContext } from '../App';
 
 
 export function Cart() {
-  const {id} = useParams();
+  //const {id} = useParams();
   const { cart, price, clear } = useContext(CartContext)
   //const { cart, price, addProduct, isInCart } = useContext(CartContext);
   let navigate = useNavigate();
