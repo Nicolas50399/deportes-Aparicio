@@ -31,6 +31,7 @@ export const ArchivoContainer = () => {
 }
 
 export const Header = () => {
+    let navigate = useNavigate();
     return (
         <header>
             <div className='headerNavLogo'>
@@ -47,7 +48,7 @@ export const Header = () => {
                     </Container>
                 </Navbar>
             </div>
-            <BsCart3 className='carritoCompras' />
+            <BsCart3 className='carritoCompras' onClick={() => {navigate("/cart")}} />
         </header>
     );
 }

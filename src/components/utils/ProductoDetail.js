@@ -3,24 +3,14 @@ import ProductoCount from '../ProductoCount';
 import "../ProductoDetailContainerStyle.css";
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { CartContext } from '../ProductoDetailContainer';
+import { CartContext } from '../../App';
+import productos from './productos';
 
-export const CountContext = createContext();
 
-const CountProvider = ({children}) => {
-  const [count, setCount] = useState(0)
-  const cambiarCount = (nuevoCount) => setCount(nuevoCount)
-  return(
-    <CountContext.Provider value={ {count, cambiarCount} }>
-      {children}
-    </CountContext.Provider>
-  );
-}
-
-export function ProductoDetail({nombre, descripcion, imagen, precio, stock}) {
-  const { cart, price, addProduct, isInCart } = useContext(CartContext);
-  //const { count } = useContext(CountContext);
+export function ProductoDetail({nombre, descripcion, imagen, precio, stock, id}) {
+  const { cart, addProduct } = useContext(CartContext);
   const [agregado, setAgregado] = useState(false)
+  const [cant, setCant] = useState(0);
   let navigate = useNavigate();
   return (
     <div className={"producto"}>
@@ -31,16 +21,17 @@ export function ProductoDetail({nombre, descripcion, imagen, precio, stock}) {
 
 
 
-            {agregado? <button onClick={() => navigate("./cart")}>Terminar mi compra</button> : 
+            {agregado? <button onClick={() => {
+              navigate("/cart")
+              console.log(cart)
+            }}>Terminar mi compra</button> : 
             <>
-            <CountProvider>
-              <ProductoCount stock={stock} precio={precio} />
-            </CountProvider>
+            <ProductoCount stock={stock} precio={precio} setCant={setCant} />
             <button onClick={
               () => {
                 console.log("agregado")
-                //console.log({count})
                 setAgregado(true)
+                addProduct(productos[id-1], cant)
               }
             }>Agregar al carrito</button>
             </>}
