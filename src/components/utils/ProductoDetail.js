@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react'
+import React, { useContext } from 'react'
 import ProductoCount from '../ProductoCount';
 import "../ProductoDetailContainerStyle.css";
 import { useState } from 'react';
@@ -21,13 +21,13 @@ export function ProductoDetail({nombre, descripcion, imagen, precio, stock, id})
 
 
 
-            {agregado? <button onClick={() => {
+            {agregado? <button className='button1' onClick={() => {
               navigate("/cart")
               console.log(cart)
-            }}>Terminar mi compra</button> : 
+            }}>Ir al carrito</button> : 
             <>
             <ProductoCount stock={stock} precio={precio} setCant={setCant} />
-            <button onClick={
+            <button className='button2' onClick={
               () => {
                 console.log("agregado")
                 setAgregado(true)

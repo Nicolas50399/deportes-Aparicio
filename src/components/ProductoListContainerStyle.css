@@ -47,6 +47,8 @@ main{
     grid-area: prod5;
     border: 1px solid rgb(109, 107, 107);
 }
+
+
 /*
 @media only screen and (max-width: 950px){
     .container{

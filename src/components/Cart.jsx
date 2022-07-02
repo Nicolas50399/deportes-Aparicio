@@ -17,16 +17,17 @@ export function Cart() {
     <Header />
     <main className='mainCart'>
       <h1>CARRITO</h1>
-        {cart.map(p => 
+        {(cart.length > 0) ? cart.map(p => 
           <ProductoCart key={p.id} {...p} />
-        )}
+        ) : <h2>No hay items</h2>}
+        
         <h2>PRECIO TOTAL: ${price}</h2>
-        <button onClick={() => clear()}>Vaciar carrito</button>
-        <button onClick={() => {
+        <button className='button3' onClick={() => clear()}>Vaciar carrito</button>
+        <button className='button1' onClick={() => {
           clear();
           navigate("/finish")
           }}>Finalizar compra</button>
-        <button onClick={() => navigate("/")}> Volver al inicio </button>
+        <button className='button5' onClick={() => navigate("/")}> Volver al inicio </button>
     </main>
     <Footer />
     </>

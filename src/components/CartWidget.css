@@ -1,0 +1,16 @@
+.carritoCompras{
+    height: 40px;
+    width: 40px;
+    margin-right: 8px;
+}
+
+.carritoCompras:hover{
+    color: black;
+}
+
+.countCarrito{
+    color: white;
+    position: absolute;
+    right: 60px;
+    display: flex;
+}

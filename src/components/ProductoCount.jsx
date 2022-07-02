@@ -1,10 +1,9 @@
 
 import React, { useState } from 'react'
-import { useContext } from 'react'
 import './ProductoCount.css'
 
 const ButtonComponentAdd = ({count,changeCount,stock}) => {
-    return <button className='button1' onClick={
+    return <button className='button1 botonContador' onClick={
         () => {
             adding(count,changeCount,stock)
         }
@@ -12,7 +11,7 @@ const ButtonComponentAdd = ({count,changeCount,stock}) => {
   }
 
   const ButtonComponentRemove = ({count,changeCount}) => {
-    return <button className='button5' onClick={
+    return <button className='button3 botonContador' onClick={
         () => {
             subs(count,changeCount)
         }

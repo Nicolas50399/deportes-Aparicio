@@ -37,7 +37,7 @@ function ProductoDetailContainer() {
                 products.length? <ProductoDetail key={product.id} {...product} /> : <Loader />
             }
         </div>
-        <button onClick={() => navigate("/productos")}> Volver atrás </button>
+        <button className='button5' onClick={() => navigate("/productos")}> Volver atrás </button>
     </main>
     <Footer />
     </>

@@ -12,8 +12,8 @@ import seccionTenis1 from '../assets/seccionTenis1.jpg';
 import seccionFutbol1 from '../assets/seccionFutbol1.jpg';
 import seccionBasquet1 from '../assets/seccionBasquet1.jpg';
 import { useNavigate, Link } from "react-router-dom"
-import { BsCart3 } from "react-icons/bs";
 import { SiInstagram, SiWhatsapp, SiFacebook, SiGmail } from "react-icons/si";
+import CartWidget from './CartWidget';
 
 
 
@@ -30,7 +30,6 @@ export const ArchivoContainer = () => {
 }
 
 export const Header = () => {
-    let navigate = useNavigate();
     return (
         <header>
             <div className='headerNavLogo'>
@@ -47,7 +46,7 @@ export const Header = () => {
                     </Container>
                 </Navbar>
             </div>
-            <BsCart3 className='carritoCompras' onClick={() => {navigate("/cart")}} />
+            <CartWidget />
         </header>
     );
 }
@@ -80,7 +79,7 @@ const Main = () => {
             </section>
             <List />
             <h2 className='tituloProductosDestacados'>PRODUCTOS DESTACADOS</h2>
-            <button onClick={() => navigate("/productos")}> Ir a la lista de productos </button>
+            <button className='button2' onClick={() => navigate("/productos")}> Ir a la lista de productos </button>
         </main>
     );
 }

@@ -16,7 +16,6 @@
     background-color: white; 
     color: black; 
     border: 2px solid #4CAF50;
-    width: 10%;
   }
   
   .button1:hover {
@@ -27,6 +26,9 @@
     background-color: white;
     color: black;
     border: 2px solid #555555;
+  }
+
+  .botonContador{
     width: 10%;
   }
   

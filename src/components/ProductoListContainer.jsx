@@ -25,9 +25,9 @@ function ProductoListContainer() {
       <Header />
       <main>
        <div className="secciones">
-       <button onClick={() => filtrarPor("futbol")}> Futbol </button>
-       <button onClick={() => filtrarPor("basquet")}> Basquet </button>
-       <button onClick={() => filtrarPor("tenis")}> Tenis </button>
+       <button className='button2' onClick={() => filtrarPor("futbol")}> Futbol </button>
+       <button className='button2' onClick={() => filtrarPor("basquet")}> Basquet </button>
+       <button className='button2' onClick={() => filtrarPor("tenis")}> Tenis </button>
        </div>
         <h2 className='tituloProductosDestacados'>PRODUCTOS DESTACADOS</h2>
         <div className="contenedor">
@@ -35,7 +35,7 @@ function ProductoListContainer() {
                 products?.length <= 0 ? <Loader /> : <ProductoList productos={products}/>
             }
         </div>
-       <button onClick={() => navigate("/")}> Volver al inicio </button>
+       <button className='button5' onClick={() => navigate("/")}> Volver al inicio </button>
       </main>
       <Footer />
     </>
