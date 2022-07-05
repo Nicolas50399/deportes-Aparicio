@@ -3,7 +3,7 @@ import ProductoCount from '../ProductoCount';
 import "../ProductoDetailContainerStyle.css";
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { CartContext } from '../../App';
+import { CartContext } from '../../AppContext';
 import productos from './productos';
 
 
