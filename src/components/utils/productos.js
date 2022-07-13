@@ -39,7 +39,7 @@ const productos = [
     {
         id: 4,
         seccion: "futbol",
-        nombre: 'Camiseta Argentina (Messi) ',
+        nombre: 'Camiseta Argentina (Messi)',
         descripcion: 'Una camiseta de Argentina con estampado de Messi',
         precio: 10000,
         stock: 25,
