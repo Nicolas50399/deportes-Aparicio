@@ -24,7 +24,7 @@ function ProductoDetailContainer() {
             setProduct({ id: snapshot.id, ...snapshot.data()});
             }
         });
-    }, []);
+    }, );
 
   return (
     <>

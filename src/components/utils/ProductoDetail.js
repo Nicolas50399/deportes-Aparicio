@@ -4,7 +4,6 @@ import "../ProductoDetailContainerStyle.css";
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { CartContext } from '../../AppContext';
-import productos from './productos';
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 
 
@@ -24,7 +23,7 @@ export function ProductoDetail({nombre, descripcion, imagen, precio, stock, id})
         setProduct({ id: snapshot.id, ...snapshot.data()});
         }
     });
-}, []);
+}, );
 
   return (
     <div className={"producto"}>
