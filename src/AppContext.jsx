@@ -8,14 +8,15 @@ const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
     const [price, setPrice] = useState(0);
     const [cant, setCant] = useState(0);
-
+    const [ids, setIds] = useState([]);
 
     const addProduct = (product, quantity) => {
         product.cantidad += quantity //Cantidad en el carrito aumentada
         product.stock -= quantity //Stock del producto reducido
-        setCant(cant + product.cantidad); // Cantidad total aumentada
+        setCant(cant + quantity); // Cantidad total aumentada
         setPrice(price + (product.precio * product.cantidad)); //Precio total aumentado
-        if(!cart.includes(product)){
+        if(!ids.includes(product.id)){
+            setIds(ids.concat(product.id));
             setCart(cart.concat(product));//Agrega a la lista de productos, si no es repetido
         }
         

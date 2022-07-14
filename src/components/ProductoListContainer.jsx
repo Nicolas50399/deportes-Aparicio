@@ -6,18 +6,40 @@ import ProductoList from './ProductoList'
 import Loader from './Loader'
 import { Footer, Header } from './ArchivoContainer'
 import { useNavigate } from "react-router-dom"
+import { collection, getDocs, getFirestore, query, where } from "firebase/firestore";
 
 function ProductoListContainer() {
     const [products, setProducts] = useState([])
     let navigate = useNavigate();
 
     useEffect(() => {
-        customFetch(3000, productos)
-        .then(resultado => setProducts(resultado))
-    },[])
+      const db = getFirestore();
+
+      const q = query(
+        collection(db, "productos"),
+        where("stock", ">", 0)
+      );
+      getDocs(q).then((snapshot) => {
+        if(snapshot.size === 0){
+          console.log("No results");
+        }
+        setProducts(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+      });
+    }, []);
+    
 
     const filtrarPor = (seccion) => {
-      setProducts(productos.filter(producto => producto.seccion === seccion))
+      const db = getFirestore();
+      const q = query(
+        collection(db, "productos"),
+        where("seccion", "==", seccion)
+      );
+      getDocs(q).then((snapshot) => {
+        if(snapshot.size === 0){
+          console.log("No results");
+        }
+        setProducts(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+      });
     }
 
   return (
