@@ -8,8 +8,8 @@ import { doc, getDoc, getFirestore } from "firebase/firestore";
 
 
 export function ProductoDetail({nombre, descripcion, imagen, precio, stock, id}) {
-  const { cart, addProduct } = useContext(CartContext);
-  const [agregado, setAgregado] = useState(false)
+  const { cart, addProduct, items } = useContext(CartContext);
+  const [agregado, setAgregado] = useState(false);
   const [cant, setCant] = useState(0);
   const [product, setProduct] = useState([])
   let navigate = useNavigate();
@@ -27,6 +27,7 @@ export function ProductoDetail({nombre, descripcion, imagen, precio, stock, id})
 
   return (
     <div className={"producto"}>
+            <button onClick={() => console.log(items)} >PRODUCTOS</button>
             <h2 className="nombreProducto">{nombre}</h2>
             <p className="descripcionProducto">{descripcion}</p>
             <img src={imagen} alt="IMG"/>
@@ -45,6 +46,12 @@ export function ProductoDetail({nombre, descripcion, imagen, precio, stock, id})
                 console.log("agregado")
                 setAgregado(true)
                 addProduct(product, cant)
+                /*
+                
+                const db = getFirestore();
+
+                const orderDoc = doc(db, "productos", `${id}`);
+                updateDoc(orderDoc, { stock: (stock - cant) });*/
               }
             }>Agregar al carrito</button>
             </>}

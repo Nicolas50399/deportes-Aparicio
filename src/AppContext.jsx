@@ -1,18 +1,37 @@
 import React from 'react'
 import { createContext, useState } from 'react';
 import App from './App';
+import productos from './components/utils/productos';
 
 export const CartContext = createContext();
+
+let registrado = false;
 
 const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
     const [price, setPrice] = useState(0);
     const [cant, setCant] = useState(0);
     const [ids, setIds] = useState([]);
+    const [items, setItems] = useState(productos);
+
+    const registrarProducto = (product) => {
+        //setItems(items.concat(product))
+    }
+
+    const registrarProductos = () => {
+        if(!registrado){
+          for(let i = 0; i < items.length; i++){
+              registrarProducto({id: items[i].id, stock: items[i].stock, cantidad: items[i].cantidad})
+          }
+      }
+      registrado = true
+    }
+    
 
     const addProduct = (product, quantity) => {
-        product.cantidad += quantity //Cantidad en el carrito aumentada
-        product.stock -= quantity //Stock del producto reducido
+        items[product.id - 1].cantidad += quantity //Cantidad en el carrito aumentada
+        items[product.id - 1].stock -= quantity //Stock del producto reducido
+        setItems(items);
         setCant(cant + quantity); // Cantidad total aumentada
         setPrice(price + (product.precio * product.cantidad)); //Precio total aumentado
         if(!ids.includes(product.id)){
@@ -23,7 +42,9 @@ const CartProvider = ({ children }) => {
     }
     const removeProduct = (id) => {
         const productoASacar = cart.find((product) => product.id === id);
-        productoASacar.stock += productoASacar.cantidad//Stock del producto reestablecido
+        items[productoASacar.id - 1].stock += productoASacar.cantidad//Stock del producto reestablecido
+        items[productoASacar.id - 1].cantidad -= productoASacar.cantidad//Stock del producto reestablecido
+        setItems(items);
         setPrice(price - (productoASacar.precio * productoASacar.cantidad)) //Precio total reducido
         setCant(cant - productoASacar.cantidad); // Cantidad total disminuida
         productoASacar.cantidad = 0; //Cantidad en el carrito nula
@@ -32,9 +53,11 @@ const CartProvider = ({ children }) => {
     }
     const clear = () => {
         cart.forEach(p => {
-          p.stock += p.cantidad;
-          p.cantidad=0;
+            items[p.id - 1].stock += items[p.id - 1].cantidad;
+            items[p.id - 1].cantidad=0;
         });//Cantidad de todos los productos en el carrito
+        setItems(items);
+
         setPrice(0);//Precio total nulo
         setCant(0);//Cantidad total nula
         setCart([]);//Carrito vacio
@@ -44,7 +67,7 @@ const CartProvider = ({ children }) => {
     }
 
     return (
-        <CartContext.Provider value={{ cart, price, addProduct, removeProduct, clear, isInCart, cant }} >
+        <CartContext.Provider value={{ cart, price, addProduct, removeProduct, clear, isInCart, cant, registrarProductos, items }} >
             {children}
         </CartContext.Provider>
     );

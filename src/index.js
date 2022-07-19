@@ -42,9 +42,52 @@ useEffect(() => {
 }, []);
 usar el where para traer los productos que necesitemos, NO traer todo y despues filtrar
 
+
+-----------------------------------------------
+
+CREAR DOCUMENTO
+
+import { addDoc, collection, getFirestore } from 'firebase/firestore';
+
+const sendOrder = () => {
+  const order = {
+    buyer: { name: "", phone: "", email: "@gmail.com"},
+    items: [{ name: "", price: 0}],
+    total: 0
+  };
+  const db = getFirestore();
+
+  const ordersCollection = collection(db, "orders");
+
+  addDoc(ordersCollection, order).then(({ id }) => setOrderId(id));
+}
+
+
+ACTUALIZAR DOCUMENTO
+import { doc, getFirestore, updateDoc } from "firebase/firestore";
+
+const updateOrder = () => {
+  const db = getFirestore();
+
+  const orderDoc = doc(db, "orders", "id");
+  updateDoc(orderDoc, { total: 0 });
+}
+
+ACTUALIZAR MUCHOS DOCUMENTOS
+
+import { getFirestore, writeBatch } from 'firebase/firestore';
+
+const updateOrder = () => {
+  const db = getFirestore();
+
+  const batch = writeBatch(db);
+
+  batch.update(doc1, { total: 0 });
+  batch.set(doc2, { field: "new field value" });
+
+  batch.commit();
+}
 */
-
-
 
 
 //-------------------------------------------------------------------------------------------------
