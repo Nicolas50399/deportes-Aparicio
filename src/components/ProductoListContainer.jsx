@@ -57,7 +57,6 @@ function ProductoListContainer() {
     <>
       <Header />
       <main>
-      <button onClick={() => console.log(items)} >PRODUCTOS</button>
        <div className="secciones">
        <button className='button2' onClick={() => filtrarPor("futbol")}> Futbol </button>
        <button className='button2' onClick={() => filtrarPor("basquet")}> Basquet </button>

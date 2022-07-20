@@ -6,8 +6,7 @@ import { Footer, Header } from './ArchivoContainer';
 import { addDoc, collection, getFirestore, updateDoc, doc } from 'firebase/firestore';
 import { useState } from 'react';
 
-const SendOrder = (nombre, email, telefono) => {
-    const { CrearOrdenPedido, price, cart } = useContext(CartContext);
+const SendOrder = (nombre, email, telefono, crearOrdenPedido, price, cart) => {
     const order = {
       buyer: { name: nombre, phone: telefono, email: email},
       items: cart,
@@ -17,19 +16,16 @@ const SendOrder = (nombre, email, telefono) => {
   
     const ordersCollection = collection(db, "orders");
   
-    addDoc(ordersCollection, order).then(({ id }) => CrearOrdenPedido(id));
+    addDoc(ordersCollection, order).then(({ id }) => crearOrdenPedido(id));
   }
 
-  const UpdateOrder = () => {
-    const { cart } = useContext(CartContext);
+  const UpdateOrder = (cart) => {
     const db = getFirestore();
 
-    for(let i = 0; i < cart.length; i++){
-        const orderDoc = doc(db, "productos", `${cart[i].id}`);
-        updateDoc(orderDoc, { stock: (cart[i].stock - cart[i].cant) });
-    }
-  
-    
+            for(let i = 0; i < cart.length; i++){
+                const orderDoc = doc(db, "productos", `${cart[i].id}`);
+                updateDoc(orderDoc, { stock: (cart[i].stock) });
+            }
   }
 
   const InputComponent = ( { valor, changeValue }) => {
@@ -48,7 +44,7 @@ function Orden() {
     const [telefono, setTelefono] = useState("");
 
     let navigate = useNavigate();
-    const { clear } = useContext(CartContext);
+    const { clear, cart, crearOrdenPedido, price } = useContext(CartContext);
   return (
     <>
     <Header />
@@ -63,8 +59,9 @@ function Orden() {
         <br />
         <br />
         <button onClick={() => {
-            SendOrder(nombre, email, telefono)
-            UpdateOrder()
+            SendOrder(nombre, email, telefono, crearOrdenPedido, price, cart)
+            UpdateOrder(cart)
+            
             navigate("/finish")
             clear();
             }}> FINALIZAR COMPRA </button>

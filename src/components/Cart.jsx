@@ -17,7 +17,6 @@ export function Cart() {
     <>
     <Header />
     <main className='mainCart'>
-    <button onClick={() => console.log(cart)} >PRODUCTOS</button>
       <h1>CARRITO</h1>
         {(cart.length > 0) ? 
         <>

@@ -12,13 +12,17 @@ const CartProvider = ({ children }) => {
     const [cant, setCant] = useState(0);
     const [ids, setIds] = useState([]);
     const [items, setItems] = useState([]);
-    const [orderId, setOrderId] = useState({});
+    const [orderId, setOrderId] = useState([]);
 
     const registrarProductos = (products) => {
         if(!registrado){
           setItems(products);
       }
       registrado = true
+    }
+
+    const crearOrdenPedido = (id) => {
+        setOrderId(orderId.concat(id))
     }
     
 
@@ -63,7 +67,7 @@ const CartProvider = ({ children }) => {
     }
 
     return (
-        <CartContext.Provider value={{ cart, price, setPrice, addProduct, removeProduct, clear, isInCart, cant, registrarProductos, items }} >
+        <CartContext.Provider value={{ cart, price, setPrice, addProduct, removeProduct, clear, isInCart, cant, registrarProductos, items, crearOrdenPedido, orderId }} >
             {children}
         </CartContext.Provider>
     );

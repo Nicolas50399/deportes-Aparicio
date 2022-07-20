@@ -29,7 +29,6 @@ export function ProductoDetail({nombre, descripcion, imagen, precio, stock, id})
 
   return (
     <div className={"producto"}>
-            <button onClick={() => console.log(items)} >PRODUCTOS</button>
             <h2 className="nombreProducto">{nombre}</h2>
             <p className="descripcionProducto">{descripcion}</p>
             <img src={imagen} alt="IMG"/>
