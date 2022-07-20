@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import customFetch from "../utils/customFetch"
-import productos from './utils/productos'
 import './ProductoListContainerStyle.css'
 import ProductoList from './ProductoList'
 import Loader from './Loader'
@@ -30,8 +29,9 @@ function ProductoListContainer() {
           console.log("No results");
         }
         setProducts(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+        registrarProductos(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
       });
-    }, []);
+    }, );
 
     
     
@@ -51,12 +51,12 @@ function ProductoListContainer() {
         setProducts(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
       });
     }
+    
 
   return (
     <>
       <Header />
       <main>
-      {registrarProductos()}
       <button onClick={() => console.log(items)} >PRODUCTOS</button>
        <div className="secciones">
        <button className='button2' onClick={() => filtrarPor("futbol")}> Futbol </button>

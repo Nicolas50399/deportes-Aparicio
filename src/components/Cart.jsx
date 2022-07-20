@@ -5,6 +5,7 @@ import "./CartStyle.css"
 import { useContext } from 'react';
 import ProductoCart from './ProductoCart';
 import { CartContext } from '../AppContext';
+import { useState } from 'react';
 
 
 export function Cart() {
@@ -16,6 +17,7 @@ export function Cart() {
     <>
     <Header />
     <main className='mainCart'>
+    <button onClick={() => console.log(cart)} >PRODUCTOS</button>
       <h1>CARRITO</h1>
         {(cart.length > 0) ? 
         <>
@@ -25,8 +27,7 @@ export function Cart() {
         <h2>PRECIO TOTAL: ${price}</h2>
         <button className='button3' onClick={() => clear()}>Vaciar carrito</button>
         <button className='button1' onClick={() => {
-          clear();
-          navigate("/finish")
+          navigate("/orden")
           }}>Finalizar compra</button>
         </>
         : 

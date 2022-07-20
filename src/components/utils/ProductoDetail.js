@@ -12,6 +12,7 @@ export function ProductoDetail({nombre, descripcion, imagen, precio, stock, id})
   const [agregado, setAgregado] = useState(false);
   const [cant, setCant] = useState(0);
   const [product, setProduct] = useState([])
+  const [stk, setStk] = useState();
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -21,6 +22,7 @@ export function ProductoDetail({nombre, descripcion, imagen, precio, stock, id})
     getDoc(biciRef).then((snapshot) => {
         if(snapshot.exists()){
         setProduct({ id: snapshot.id, ...snapshot.data()});
+        setStk(items[id-1].stock)
         }
     });
 }, );
@@ -40,12 +42,12 @@ export function ProductoDetail({nombre, descripcion, imagen, precio, stock, id})
               console.log(cart)
             }}>Ir al carrito</button> : 
             <>
-            <ProductoCount stock={stock} precio={precio} setCant={setCant} />
+            <ProductoCount stock={stk} precio={precio} setCant={setCant} />
             <button className='button2' onClick={
               () => {
                 console.log("agregado")
                 setAgregado(true)
-                addProduct(product, cant)
+                addProduct(items[id-1], cant)
                 /*
                 
                 const db = getFirestore();

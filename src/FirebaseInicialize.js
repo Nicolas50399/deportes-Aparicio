@@ -10,12 +10,12 @@ import { initializeApp } from "firebase/app";
 export function FirebaseInicialize() {
 // Your web app's Firebase configuration
     const firebaseConfig = {
-        apiKey: "AIzaSyCzqwJrngA50MgPt6mtRYjL9t4qLElUhvk",
-        authDomain: "nico-app-88e7f.firebaseapp.com",
-        projectId: "nico-app-88e7f",
-        storageBucket: "nico-app-88e7f.appspot.com",
-        messagingSenderId: "264102794474",
-        appId: "1:264102794474:web:6960c6aca328ba58767393"
+        apiKey: "AIzaSyD2I3kurdpTTZksUGT8jdU_NpXdD92u1x8",
+        authDomain: "nico-app3.firebaseapp.com",
+        projectId: "nico-app3",
+        storageBucket: "nico-app3.appspot.com",
+        messagingSenderId: "820900891368",
+        appId: "1:820900891368:web:ebe3da271523b5d9ca575d"
     };
     
     // Initialize Firebase

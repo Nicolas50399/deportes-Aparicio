@@ -4,6 +4,7 @@ import ProductoDetailContainer from "./ProductoDetailContainer";
 import ProductoListContainer from "./ProductoListContainer";
 import { Cart } from "./Cart";
 import Finish from "./Finish";
+import Orden from "./Orden";
 
 export const AppRouting = () => {
     return (<BrowserRouter>
@@ -17,6 +18,7 @@ export const AppRouting = () => {
     */}
             <Route path="/cart" element={<Cart />} />
             <Route path="/finish" element={<Finish />} />
+            <Route path="/orden" element={<Orden />} />
         </Routes>
     </BrowserRouter>);
 }

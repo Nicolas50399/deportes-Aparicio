@@ -63,7 +63,7 @@ const StockContainer = ({ componente:ComponenteCustomizado }) => {
 };
 
 export const EventsExample = () => {
-    return <StockContainer componente={SelectComponent} />;
+    return <StockContainer componente={InputComponent} />;
 }
 
 const handleSubmit = e => {

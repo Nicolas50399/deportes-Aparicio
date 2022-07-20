@@ -1,7 +1,6 @@
 import React from 'react'
 import { createContext, useState } from 'react';
 import App from './App';
-import productos from './components/utils/productos';
 
 export const CartContext = createContext();
 
@@ -12,29 +11,26 @@ const CartProvider = ({ children }) => {
     const [price, setPrice] = useState(0);
     const [cant, setCant] = useState(0);
     const [ids, setIds] = useState([]);
-    const [items, setItems] = useState(productos);
+    const [items, setItems] = useState([]);
+    const [orderId, setOrderId] = useState({});
 
-    const registrarProducto = (product) => {
-        //setItems(items.concat(product))
-    }
-
-    const registrarProductos = () => {
+    const registrarProductos = (products) => {
         if(!registrado){
-          for(let i = 0; i < items.length; i++){
-              registrarProducto({id: items[i].id, stock: items[i].stock, cantidad: items[i].cantidad})
-          }
+          setItems(products);
       }
       registrado = true
     }
     
 
     const addProduct = (product, quantity) => {
-        items[product.id - 1].cantidad += quantity //Cantidad en el carrito aumentada
-        items[product.id - 1].stock -= quantity //Stock del producto reducido
+        const itemAAgregar = items.find((prod) => prod.id === product.id)
+        itemAAgregar.cantidad += quantity //Cantidad en el carrito aumentada
+        itemAAgregar.stock -= quantity //Stock del producto reducido
+        console.log(itemAAgregar)
         setItems(items);
         setCant(cant + quantity); // Cantidad total aumentada
         setPrice(price + (product.precio * product.cantidad)); //Precio total aumentado
-        if(!ids.includes(product.id)){
+        if(!cart.includes(product)){
             setIds(ids.concat(product.id));
             setCart(cart.concat(product));//Agrega a la lista de productos, si no es repetido
         }
@@ -42,11 +38,11 @@ const CartProvider = ({ children }) => {
     }
     const removeProduct = (id) => {
         const productoASacar = cart.find((product) => product.id === id);
-        items[productoASacar.id - 1].stock += productoASacar.cantidad//Stock del producto reestablecido
-        items[productoASacar.id - 1].cantidad -= productoASacar.cantidad//Stock del producto reestablecido
-        setItems(items);
-        setPrice(price - (productoASacar.precio * productoASacar.cantidad)) //Precio total reducido
+        const itemASacar = items.find((product) => product.id === id);
+        itemASacar.stock += productoASacar.cantidad//Stock del producto reestablecido
+        setPrice(price - (itemASacar.precio * itemASacar.cantidad)) //Precio total reducido
         setCant(cant - productoASacar.cantidad); // Cantidad total disminuida
+        itemASacar.cantidad -= productoASacar.cantidad//Stock del producto reestablecido
         productoASacar.cantidad = 0; //Cantidad en el carrito nula
         setCart(cart.filter(p => p.id !== productoASacar.id)); //Quita de la lista de productos
 
@@ -67,7 +63,7 @@ const CartProvider = ({ children }) => {
     }
 
     return (
-        <CartContext.Provider value={{ cart, price, addProduct, removeProduct, clear, isInCart, cant, registrarProductos, items }} >
+        <CartContext.Provider value={{ cart, price, setPrice, addProduct, removeProduct, clear, isInCart, cant, registrarProductos, items }} >
             {children}
         </CartContext.Provider>
     );
