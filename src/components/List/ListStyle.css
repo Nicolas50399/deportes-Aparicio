@@ -11,3 +11,9 @@
     border-bottom: 2px solid blue;
     border-radius: 0.5rem;
 }
+
+@media only screen and (max-width: 540px){
+    .listContainer > li{
+        font-size: large;
+    }
+}

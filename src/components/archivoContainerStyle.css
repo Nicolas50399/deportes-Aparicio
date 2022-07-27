@@ -35,6 +35,7 @@ header{
     align-items: center;
 }
 
+
 .headerNavLogo{
     display: flex;
     justify-content: start;
@@ -80,10 +81,10 @@ header{
 }
 .descripcionDeporte{
     grid-area: descDep;
+    /*font-size: small;*/
 }
 .iconoDeporte{
     grid-area: iconDep;
-    border: 1px solid white;
     margin-left: 10px;
     width: 100px;
     height: 100px;
@@ -94,6 +95,16 @@ header{
     margin: 3px 20px;
     width: 88%;
     height: 580px;
+    align-self: center;
+    justify-self: center;
+}
+.imagenDeporte2{
+    display: none;
+    grid-area: imgDep;
+    border: 1px solid white;
+    margin: 3px 20px;
+    width: 88%;
+    height: 270px;
     align-self: center;
     justify-self: center;
 }
@@ -138,7 +149,7 @@ header{
     cursor: not-allowed;
 }
 
-/*@media only screen and (max-width: 1050px){
+@media only screen and (max-width: 980px){/*
     .deportes{
         display: flex;
         flex-direction: column;
@@ -150,8 +161,62 @@ header{
     }
     .imagenDeporte{
         height: 260px;
-    }
+    }*/
     .iconoDeporte{
-        width: 100px;
+        width: 80px;
+        height: 80px;
     }
-}*/
+    .imgIcono{
+        width: 70px;
+        height: 70px;
+    }
+    .descripcionDeporte{
+        font-size: small;
+    }
+}
+
+@media only screen and (max-width: 800px){
+    .descripcionDeporte{
+        font-size: 75%;
+    }
+}
+
+@media only screen and (max-width: 650px){
+    header{
+        flex-direction: column;   
+    }
+    .link{
+        font-size: 80%;
+        transform: translate(-100px, 0px);
+    }
+    .deportes{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    }
+    .cartaDeportesPrimarios{
+        margin: 1rem 0;
+        width: 94%;
+        grid-template-rows: 100px 100px 280px;
+    }
+    .imagenDeporte2{
+        display: block;
+        
+    }
+    .imagenDeporte{
+        display: none;
+    }
+    .descripcionDeporte{
+        font-size: 90%;
+    }
+}
+@media only screen and (max-width: 540px){
+    .headerNavLogo{
+        flex-direction: column;
+    }
+    .link{
+        transform: translate(0px, 0px);
+    }
+}
