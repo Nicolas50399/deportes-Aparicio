@@ -8,7 +8,7 @@ function ProductoCart({nombre, precio, imagen, id, cantidad}) {
   return (
     <div className={"producto" + id}>
         <h2 className="nombreProducto">{nombre} X {cantidad}</h2>
-        <img src={imagen} alt="IMG"/>
+        <img className='imagenProducto' src={imagen} alt="IMG"/>
         <h4>$ {precio*cantidad}</h4>
         <button className='button3' onClick = {
           () => {

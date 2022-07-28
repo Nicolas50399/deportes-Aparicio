@@ -6,7 +6,7 @@ function Producto({nombre, precio, imagen, id}){
     return (
         <div className="producto">
             <h2 className="nombreProducto">{nombre}</h2>
-            <img src={imagen} alt="IMG"/>
+            <img className="imagenProducto" src={imagen} alt="IMG"/>
             <h4 className={style.price}>$ {precio}</h4>
             <Link to={`/productos/${id}`}>Ver detalles</Link>
         </div>

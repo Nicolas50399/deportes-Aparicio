@@ -149,6 +149,11 @@ header{
     cursor: not-allowed;
 }
 
+.imagenProducto{
+    width: 140px;
+    height: 140px;
+}
+
 @media only screen and (max-width: 980px){/*
     .deportes{
         display: flex;
@@ -220,3 +225,4 @@ header{
         transform: translate(0px, 0px);
     }
 }
+

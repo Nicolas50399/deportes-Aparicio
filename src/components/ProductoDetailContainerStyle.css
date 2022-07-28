@@ -17,6 +17,10 @@ main{
     padding-bottom: 2rem;
 }
 
+.productoDetailMain{
+    height: 717px;
+}
+
 .producto{
     width: 30%;
     grid-area: prod1;

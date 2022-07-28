@@ -31,7 +31,7 @@ export function ProductoDetail({nombre, descripcion, imagen, precio, stock, id})
     <div className={"producto"}>
             <h2 className="nombreProducto">{nombre}</h2>
             <p className="descripcionProducto">{descripcion}</p>
-            <img src={imagen} alt="IMG"/>
+            <img className='imagenProducto' src={imagen} alt="IMG"/>
             <h4 className="precioProducto">$ {precio}</h4>
 
 

@@ -29,7 +29,7 @@ function ProductoDetailContainer() {
   return (
     <>
     <Header />
-    <main>
+    <main className='productoDetailMain'>
         <div className='contenedor'>
             {
                 products.length? <ProductoDetail key={product.id} {...product} /> : <Loader />

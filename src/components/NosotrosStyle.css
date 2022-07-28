@@ -4,6 +4,9 @@
 .nosotrosMain{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+}
+
+.nosotrosMain{
+    height: 718px;
 }
