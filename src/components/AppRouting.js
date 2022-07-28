@@ -5,6 +5,7 @@ import ProductoListContainer from "./ProductoListContainer";
 import { Cart } from "./Cart";
 import Finish from "./Finish";
 import Orden from "./Orden";
+import Nosotros from "./Nosotros";
 
 export const AppRouting = () => {
     return (<BrowserRouter>
@@ -15,7 +16,8 @@ export const AppRouting = () => {
             <Route path="productos/:id" element={<ProductoDetailContainer />}/>{/*
             localhost:3000/productos/5
             localhost:3000/productos/4
-    */}
+    */}     
+            <Route path="/nosotros" element={<Nosotros />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/finish" element={<Finish />} />
             <Route path="/orden" element={<Orden />} />

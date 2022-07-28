@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import customFetch from "../utils/customFetch"
 import './ProductoListContainerStyle.css'
 import ProductoList from './ProductoList'
 import Loader from './Loader'
@@ -13,7 +12,7 @@ import { CartContext } from '../AppContext'
 
 function ProductoListContainer() {
   
-    const { items, registrarProductos } = useContext(CartContext);
+    const { registrarProductos } = useContext(CartContext);
     const [products, setProducts] = useState([])
     let navigate = useNavigate();
 
@@ -31,7 +30,7 @@ function ProductoListContainer() {
         setProducts(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
         registrarProductos(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
       });
-    }, );
+    }, []);
 
     
     

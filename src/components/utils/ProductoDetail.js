@@ -25,7 +25,7 @@ export function ProductoDetail({nombre, descripcion, imagen, precio, stock, id})
         setStk(items[id-1].stock)
         }
     });
-}, );
+}, []);
 
   return (
     <div className={"producto"}>

@@ -17,33 +17,25 @@ main{
     padding-bottom: 2rem;
 }
 
-.producto1{
+.producto{
+    width: 30%;
     grid-area: prod1;
     border: 1px solid rgb(109, 107, 107);
 }
-.producto2{
-    grid-area: prod2;
-    border: 1px solid rgb(109, 107, 107);
-}
-.producto3{
-    grid-area: prod3;
-    border: 1px solid rgb(109, 107, 107);
-}
-.producto4{
-    grid-area: prod4;
-    border: 1px solid rgb(109, 107, 107);
-}
-.producto5{
-    grid-area: prod5;
-    border: 1px solid rgb(109, 107, 107);
-}
-/*
-@media only screen and (max-width: 950px){
-    .container{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
+@media only screen and (max-width: 1560px){
+    .nombreProducto{
+        height: 80px;
     }
-}*/
+}
 
+@media only screen and (max-width: 1000px){
+    .producto{
+        width: 45%;
+    }
+}
+
+@media only screen and (max-width: 800px){
+    .producto{
+        width: 100%;
+    }
+}

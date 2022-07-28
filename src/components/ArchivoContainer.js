@@ -42,9 +42,8 @@ export const Header = () => {
                     
                     <Nav className="linksHeader">
                     <Link className="link" to={`/`}>Inicio</Link>
-                    <Link className="link" to={``}>Nosotros</Link>
+                    <Link className="link" to={`/nosotros`}>Nosotros</Link>
                     <Link className="link" to={`/productos`}>Productos</Link>
-                    <Link className="link" to={``}>Contacto</Link>
                     </Nav>
                     </Container>
                 </Navbar>
@@ -111,9 +110,8 @@ export const Footer = () => {
             <p>@2022 Todos los derechos reservados</p>
             <div className="linksFooter">
                 <Link className="link" to={`/`}>Inicio</Link>
-                <Link className="link" to={``}>Nosotros</Link>
+                <Link className="link" to={`/nosotros`}>Nosotros</Link>
                 <Link className="link" to={`/productos`}>Productos</Link>
-                <Link className="link" to={``}>Contacto</Link>
             </div>
             <div className='redesFooter'>
                 <SiFacebook className='red' />

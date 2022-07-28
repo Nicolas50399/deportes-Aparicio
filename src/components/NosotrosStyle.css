@@ -1,0 +1,9 @@
+.nosotrosText{
+    width: 70%;
+}
+.nosotrosMain{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

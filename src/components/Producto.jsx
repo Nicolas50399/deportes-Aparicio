@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function Producto({nombre, precio, imagen, id}){
     return (
-        <div className={"producto" + id}>
+        <div className="producto">
             <h2 className="nombreProducto">{nombre}</h2>
             <img src={imagen} alt="IMG"/>
             <h4 className={style.price}>$ {precio}</h4>
