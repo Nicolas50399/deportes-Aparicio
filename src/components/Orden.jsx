@@ -44,7 +44,7 @@ function Orden() {
     const [telefono, setTelefono] = useState("");
 
     let navigate = useNavigate();
-    const { clear, cart, crearOrdenPedido, price } = useContext(CartContext);
+    const { clear, cart, crearOrdenPedido, precioTotalCart } = useContext(CartContext);
   return (
     <>
     <Header />
@@ -59,7 +59,7 @@ function Orden() {
         <br />
         <br />
         <button onClick={() => {
-            SendOrder(nombre, email, telefono, crearOrdenPedido, price, cart)
+            SendOrder(nombre, email, telefono, crearOrdenPedido, precioTotalCart(), cart)
             UpdateOrder(cart)
             
             navigate("/finish")

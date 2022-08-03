@@ -8,9 +8,6 @@ let registrado = false;
 
 const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
-    const [price, setPrice] = useState(0);
-    const [cant, setCant] = useState(0);
-    const [ids, setIds] = useState([]);
     const [items, setItems] = useState([]);
     const [orderId, setOrderId] = useState([]);
 
@@ -24,6 +21,15 @@ const CartProvider = ({ children }) => {
     const crearOrdenPedido = (id) => {
         setOrderId(orderId.concat(id))
     }
+
+
+    const precioTotalCart = () => {
+        return (cart.map(p => (p.precio * p.cantidad))).reduce((acumulador, precio) => acumulador+precio, 0);
+    }
+
+    const cantidadTotalItems = () => {
+        return (cart.map(p => p.cantidad)).reduce((acumulador, cantidad) => acumulador + cantidad, 0);
+    }
     
 
     const addProduct = (product, quantity) => {
@@ -32,10 +38,7 @@ const CartProvider = ({ children }) => {
         itemAAgregar.stock -= quantity //Stock del producto reducido
         console.log(itemAAgregar)
         setItems(items);
-        setCant(cant + quantity); // Cantidad total aumentada
-        setPrice(price + (product.precio * product.cantidad)); //Precio total aumentado
         if(!cart.includes(product)){
-            setIds(ids.concat(product.id));
             setCart(cart.concat(product));//Agrega a la lista de productos, si no es repetido
         }
         
@@ -44,8 +47,6 @@ const CartProvider = ({ children }) => {
         const productoASacar = cart.find((product) => product.id === id);
         const itemASacar = items.find((product) => product.id === id);
         itemASacar.stock += productoASacar.cantidad//Stock del producto reestablecido
-        setPrice(price - (itemASacar.precio * itemASacar.cantidad)) //Precio total reducido
-        setCant(cant - productoASacar.cantidad); // Cantidad total disminuida
         itemASacar.cantidad -= productoASacar.cantidad//Stock del producto reestablecido
         productoASacar.cantidad = 0; //Cantidad en el carrito nula
         setCart(cart.filter(p => p.id !== productoASacar.id)); //Quita de la lista de productos
@@ -57,9 +58,6 @@ const CartProvider = ({ children }) => {
             items[p.id - 1].cantidad=0;
         });//Cantidad de todos los productos en el carrito
         setItems(items);
-
-        setPrice(0);//Precio total nulo
-        setCant(0);//Cantidad total nula
         setCart([]);//Carrito vacio
     }
     function isInCart(product){
@@ -67,7 +65,7 @@ const CartProvider = ({ children }) => {
     }
 
     return (
-        <CartContext.Provider value={{ cart, price, setPrice, addProduct, removeProduct, clear, isInCart, cant, registrarProductos, items, crearOrdenPedido, orderId }} >
+        <CartContext.Provider value={{ cart, addProduct, removeProduct, clear, isInCart, registrarProductos, items, crearOrdenPedido, orderId, precioTotalCart, cantidadTotalItems }} >
             {children}
         </CartContext.Provider>
     );
