@@ -12,7 +12,7 @@ import { CartContext } from '../AppContext'
 
 function ProductoListContainer() {
   
-    const { registrarProductos } = useContext(CartContext);
+    //const { registrarProductos } = useContext(CartContext);
     const [products, setProducts] = useState([])
     let navigate = useNavigate();
 
@@ -28,7 +28,7 @@ function ProductoListContainer() {
           console.log("No results");
         }
         setProducts(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
-        registrarProductos(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+        //registrarProductos(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
       });
     }, []);
 

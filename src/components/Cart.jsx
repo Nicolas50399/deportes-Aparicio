@@ -8,7 +8,7 @@ import { CartContext } from '../AppContext';
 
 
 export function Cart() {
-  const { cart, precioTotalCart, clear } = useContext(CartContext)
+  const { cart, totalPlusPrice, clear } = useContext(CartContext)
   let navigate = useNavigate();
   return (
     <>
@@ -18,9 +18,9 @@ export function Cart() {
         {(cart.length > 0) ? 
         <>
         {cart.map(p => 
-                  <ProductoCart key={p.id} {...p} />
+                  <ProductoCart key={p.product.id} {...p.product} />
                 ) }
-        <h2>PRECIO TOTAL: ${precioTotalCart()}</h2>
+        <h2>PRECIO TOTAL: ${totalPlusPrice()}</h2>
         <button className='button3' onClick={() => clear()}>Vaciar carrito</button>
         <button className='button1' onClick={() => {
           navigate("/orden")

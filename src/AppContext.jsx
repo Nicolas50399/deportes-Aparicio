@@ -4,68 +4,81 @@ import App from './App';
 
 export const CartContext = createContext();
 
-let registrado = false;
-
 const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
-    const [items, setItems] = useState([]);
-    const [orderId, setOrderId] = useState([]);
 
-    const registrarProductos = (products) => {
-        if(!registrado){
-          setItems(products);
-      }
-      registrado = true
+    
+
+    const cartSize = () => {
+        return cart.length; //Devuelve la cantidad de productos diferentes del cart
     }
 
-    const crearOrdenPedido = (id) => {
-        setOrderId(orderId.concat(id))
-    }
-
-
-    const precioTotalCart = () => {
-        return (cart.map(p => (p.precio * p.cantidad))).reduce((acumulador, precio) => acumulador+precio, 0);
-    }
-
-    const cantidadTotalItems = () => {
-        return (cart.map(p => p.cantidad)).reduce((acumulador, cantidad) => acumulador + cantidad, 0);
+    const productQuantity = (id) => {//Devuelve la cantidad de un mismo producto que hay en el carrito
+        let cant = 0;
+        if (isInCart(id)) {
+            cant = cart.find(itemCart => itemCart.product.id === id).quantity;//Si el producto esta en el cart, se busca el producto dentro de el para hallar su cantidad
+        }
+        //Si no esta en el cart, por logica devuelve 0
+        return cant;
     }
     
 
-    const addProduct = (product, quantity) => {
-        const itemAAgregar = items.find((prod) => prod.id === product.id)
-        itemAAgregar.cantidad += quantity //Cantidad en el carrito aumentada
-        itemAAgregar.stock -= quantity //Stock del producto reducido
-        console.log(itemAAgregar)
-        setItems(items);
-        if(!cart.includes(product)){
-            setCart(cart.concat(product));//Agrega a la lista de productos, si no es repetido
+    const addProduct = (product, quantity) => {//Agrega un producto al carrito con la cantidad correspondiente
+        if (cartSize() === 0) {
+            setCart([{ product, quantity }]);//Si el cart esta vacio, se actualiza con el producto a agregar
+        } else {
+            if (isInCart(product.id)) {//Si el producto ya esta en el cart, se actualiza la cantidad
+                increment(product.id, quantity);
+            } else { //Si el producto no esta, se actualiza con el producto a agregar
+                setCart([...cart, { product, quantity }]);
+            }
         }
-        
     }
-    const removeProduct = (id) => {
-        const productoASacar = cart.find((product) => product.id === id);
-        const itemASacar = items.find((product) => product.id === id);
-        itemASacar.stock += productoASacar.cantidad//Stock del producto reestablecido
-        itemASacar.cantidad -= productoASacar.cantidad//Stock del producto reestablecido
-        productoASacar.cantidad = 0; //Cantidad en el carrito nula
-        setCart(cart.filter(p => p.id !== productoASacar.id)); //Quita de la lista de productos
 
+    const removeProduct = (id) => {//Quita un producto especifico, por su id
+        if (isInCart(id)) {//Si el producto esta en el cart, se actualiza ya sin este producto.
+            let itemInCartCopy = [...cart];
+            let itemCart = itemInCartCopy.find((itemCart) => (
+                itemCart.product.id === id
+            ))
+            itemInCartCopy.splice(itemInCartCopy.indexOf(itemCart), 1);
+            setCart(itemInCartCopy);
+        }
     }
+
     const clear = () => {
-        cart.forEach(p => {
-            items[p.id - 1].stock += items[p.id - 1].cantidad;
-            items[p.id - 1].cantidad=0;
-        });//Cantidad de todos los productos en el carrito
-        setItems(items);
         setCart([]);//Carrito vacio
     }
-    function isInCart(product){
-        return cart.includes(product); //El producto esta en el carrito?
+
+    function isInCart(id){//Devuelve true si el producto esta en el cart
+        return cart.some((itemCart) => itemCart.product.id === id)
+    }
+
+    const increment = (id, quantity) => {
+        const itemsInCartCopy = [...cart];
+        const itemCant = itemsInCartCopy.find(itemCant => itemCant.product.id === id);//cantidad del producto a incrementar
+        itemCant.quantity += quantity;
+        setCart(itemsInCartCopy);
+    }
+
+    const totalPlus = () => {//devuelve la cantidad total de productos del cart
+        let plus = 0;
+        cart.forEach(itemCant => {
+            plus += itemCant.quantity;
+        });
+        return plus;
+    }
+    
+    const totalPlusPrice = () => {//devuelve el precio total de productos del cart
+        let total = 0;
+        cart.forEach(itemCant => {
+            total += itemCant.quantity * itemCant.product.precio;
+        });
+        return total;
     }
 
     return (
-        <CartContext.Provider value={{ cart, addProduct, removeProduct, clear, isInCart, registrarProductos, items, crearOrdenPedido, orderId, precioTotalCart, cantidadTotalItems }} >
+        <CartContext.Provider value={{ cart, addProduct, removeProduct, clear, cartSize, productQuantity, totalPlus, totalPlusPrice, increment }} >
             {children}
         </CartContext.Provider>
     );

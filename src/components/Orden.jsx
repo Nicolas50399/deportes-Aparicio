@@ -7,6 +7,7 @@ import { addDoc, collection, getFirestore, updateDoc, doc } from 'firebase/fires
 import { useState } from 'react';
 
 const SendOrder = (nombre, email, telefono, crearOrdenPedido, price, cart) => {
+    const [orderId, setOrderId] = useState([]);
     const order = {
       buyer: { name: nombre, phone: telefono, email: email},
       items: cart,
@@ -16,7 +17,7 @@ const SendOrder = (nombre, email, telefono, crearOrdenPedido, price, cart) => {
   
     const ordersCollection = collection(db, "orders");
   
-    addDoc(ordersCollection, order).then(({ id }) => crearOrdenPedido(id));
+    addDoc(ordersCollection, order).then(({ id }) => setOrderId([...orderId, {id}]));
   }
 
   const UpdateOrder = (cart) => {

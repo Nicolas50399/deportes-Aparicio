@@ -2,37 +2,31 @@ import React, { useContext, useEffect } from 'react'
 import ProductoCount from '../ProductoCount';
 import "../ProductoDetailContainerStyle.css";
 import { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { CartContext } from '../../AppContext';
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 
 
-export function ProductoDetail({nombre, descripcion, imagen, precio, stock, id}) {
-  const { cart, addProduct, items } = useContext(CartContext);
+export function ProductoDetail({item, loading}) {
+  const { cart, addProduct, productQuantity } = useContext(CartContext);
   const [agregado, setAgregado] = useState(false);
   const [cant, setCant] = useState(0);
-  const [product, setProduct] = useState([])
-  const [stk, setStk] = useState();
+  const [stk, setStk] = useState(0);
   let navigate = useNavigate();
 
   useEffect(() => {
-    const db = getFirestore();
-
-    const biciRef = doc(db, "productos", `${id}`);
-    getDoc(biciRef).then((snapshot) => {
-        if(snapshot.exists()){
-        setProduct({ id: snapshot.id, ...snapshot.data()});
-        setStk(items[id-1].stock)
-        }
-    });
-}, []);
+    if (!loading) {
+      setStk(item.stock - productQuantity(item.id));
+  }
+}, [stk, item.stock, item.id, loading, productQuantity]);
 
   return (
     <div className={"producto"}>
-            <h2 className="nombreProducto">{nombre}</h2>
-            <p className="descripcionProducto">{descripcion}</p>
-            <img className='imagenProducto' src={imagen} alt="IMG"/>
-            <h4 className="precioProducto">$ {precio}</h4>
+            <button onClick={() => console.log(productQuantity(item.id))}>acumulado</button>
+            <h2 className="nombreProducto">{item.nombre}</h2>
+            <p className="descripcionProducto">{item.descripcion}</p>
+            <img className='imagenProducto' src={item.imagen} alt="IMG"/>
+            <h4 className="precioProducto">$ {item.precio}</h4>
 
 
 
@@ -41,18 +35,12 @@ export function ProductoDetail({nombre, descripcion, imagen, precio, stock, id})
               console.log(cart)
             }}>Ir al carrito</button> : 
             <>
-            <ProductoCount stock={stk} precio={precio} setCant={setCant} />
+            <ProductoCount stock={stk} precio={item.precio} setCant={setCant} />
             <button className='button2' onClick={
               () => {
-                console.log("agregado")
                 setAgregado(true)
-                addProduct(items[id-1], cant)
-                /*
-                
-                const db = getFirestore();
-
-                const orderDoc = doc(db, "productos", `${id}`);
-                updateDoc(orderDoc, { stock: (stock - cant) });*/
+                addProduct(item, cant)
+                setStk(item.stock - cant)
               }
             }>Agregar al carrito</button>
             </>}

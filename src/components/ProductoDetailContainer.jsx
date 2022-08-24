@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Loader from './Loader'
 import ProductoDetail from './utils/ProductoDetail';
-import productos from './utils/productos';
 import "./ProductoDetailContainerStyle.css"
 import { useParams, useNavigate } from "react-router-dom"
 import { Footer, Header } from './ArchivoContainer';
@@ -9,8 +8,8 @@ import { doc, getDoc, getFirestore } from "firebase/firestore";
 
 function ProductoDetailContainer() {
     const {id} = useParams();
-    const [products] = useState([productos])
     const [product, setProduct] = useState([])
+    const [loading, setLoading] = useState(true);
     let navigate =useNavigate();
 
     
@@ -22,6 +21,7 @@ function ProductoDetailContainer() {
         getDoc(biciRef).then((snapshot) => {
             if(snapshot.exists()){
             setProduct({ id: snapshot.id, ...snapshot.data()});
+            setLoading(false);
             }
         });
     }, );
@@ -32,7 +32,7 @@ function ProductoDetailContainer() {
     <main className='productoDetailMain'>
         <div className='contenedor'>
             {
-                products.length? <ProductoDetail key={product.id} {...product} /> : <Loader />
+                <ProductoDetail item={product} loading={loading} />
             }
         </div>
         <button className='button5' onClick={() => navigate("/productos")}> Volver atrás </button>

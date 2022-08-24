@@ -6,12 +6,12 @@ import { CartContext } from '../AppContext';
 import "./CartWidget.css"
 
 function CartWidget() {
-    const { cantidadTotalItems } = useContext(CartContext);
+    const { totalPlus } = useContext(CartContext);
     let navigate = useNavigate();
   return (
     <div className='countCarrito'>
         <BsCart3 className='carritoCompras' onClick={() => {navigate("/cart")}} />
-        {(cantidadTotalItems() > 0) ? <h2>{cantidadTotalItems()}</h2> : <></>}
+        {(totalPlus() > 0) ? <h2>{totalPlus()}</h2> : <></>}
         
     </div>
   )
