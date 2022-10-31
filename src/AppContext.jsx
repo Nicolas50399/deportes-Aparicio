@@ -5,8 +5,12 @@ import App from './App';
 export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useState([]);//context del cart
+    const [orderId, setOrderId] = useState([]);//context de la orden de pedido (para obtener el id al final)
 
+    const crearOrdenPedido = (id) => {
+        setOrderId(id)
+    }
     
 
     const cartSize = () => {
@@ -78,7 +82,7 @@ const CartProvider = ({ children }) => {
     }
 
     return (
-        <CartContext.Provider value={{ cart, addProduct, removeProduct, clear, cartSize, productQuantity, totalPlus, totalPlusPrice, increment }} >
+        <CartContext.Provider value={{ cart, addProduct, removeProduct, clear, cartSize, productQuantity, totalPlus, totalPlusPrice, increment, crearOrdenPedido, orderId }} >
             {children}
         </CartContext.Provider>
     );

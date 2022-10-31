@@ -22,7 +22,6 @@ export function ProductoDetail({item, loading}) {
 
   return (
     <div className={"producto"}>
-            <button onClick={() => console.log(productQuantity(item.id))}>acumulado</button>
             <h2 className="nombreProducto">{item.nombre}</h2>
             <p className="descripcionProducto">{item.descripcion}</p>
             <img className='imagenProducto' src={item.imagen} alt="IMG"/>
@@ -32,7 +31,6 @@ export function ProductoDetail({item, loading}) {
 
             {agregado? <button className='button1' onClick={() => {
               navigate("/cart")
-              console.log(cart)
             }}>Ir al carrito</button> : 
             <>
             <ProductoCount stock={stk} precio={item.precio} setCant={setCant} />

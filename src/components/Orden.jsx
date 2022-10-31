@@ -6,8 +6,9 @@ import { Footer, Header } from './ArchivoContainer';
 import { addDoc, collection, getFirestore, updateDoc, doc } from 'firebase/firestore';
 import { useState } from 'react';
 
-const SendOrder = (nombre, email, telefono, crearOrdenPedido, price, cart) => {
-    const [orderId, setOrderId] = useState([]);
+
+
+const SendOrder = (nombre, email, telefono, price, cart, crearOrdenPedido) => {
     const order = {
       buyer: { name: nombre, phone: telefono, email: email},
       items: cart,
@@ -17,15 +18,15 @@ const SendOrder = (nombre, email, telefono, crearOrdenPedido, price, cart) => {
   
     const ordersCollection = collection(db, "orders");
   
-    addDoc(ordersCollection, order).then(({ id }) => setOrderId([...orderId, {id}]));
+    addDoc(ordersCollection, order).then(({ id }) => crearOrdenPedido(id));
   }
 
   const UpdateOrder = (cart) => {
     const db = getFirestore();
 
             for(let i = 0; i < cart.length; i++){
-                const orderDoc = doc(db, "productos", `${cart[i].id}`);
-                updateDoc(orderDoc, { stock: (cart[i].stock) });
+                const orderDoc = doc(db, "productos", `${cart[i].product.id}`);
+                updateDoc(orderDoc, { stock: (cart[i].product.stock - cart[i].quantity) });
             }
   }
 
@@ -45,7 +46,7 @@ function Orden() {
     const [telefono, setTelefono] = useState("");
 
     let navigate = useNavigate();
-    const { clear, cart, crearOrdenPedido, precioTotalCart } = useContext(CartContext);
+    const { clear, cart, totalPlusPrice, crearOrdenPedido } = useContext(CartContext);
   return (
     <>
     <Header />
@@ -60,7 +61,8 @@ function Orden() {
         <br />
         <br />
         <button onClick={() => {
-            SendOrder(nombre, email, telefono, crearOrdenPedido, precioTotalCart(), cart)
+            SendOrder(nombre, email, telefono, totalPlusPrice(), cart, crearOrdenPedido)
+            
             UpdateOrder(cart)
             
             navigate("/finish")
